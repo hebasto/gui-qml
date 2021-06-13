@@ -127,10 +127,10 @@ AC_ARG_WITH([sqlite],
   [use_sqlite=auto])
 
 AC_ARG_WITH([bdb],
-  [AS_HELP_STRING([--without-bdb],
-  [disable bdb wallet support (default is enabled if wallet is enabled)])],
+  [AS_HELP_STRING([--with-bdb],
+  [enable bdb wallet support (default is disabled)])],
   [use_bdb=$withval],
-  [use_bdb=auto])
+  [use_bdb=no])
 
 AC_ARG_ENABLE([ebpf],
   [AS_HELP_STRING([--enable-ebpf],
