@@ -226,7 +226,7 @@ AC_ARG_ENABLE([suppress-external-warnings],
   [AS_HELP_STRING([--enable-suppress-external-warnings],
                   [Suppress warnings from external headers (default is no)])],
   [suppress_external_warnings=$enableval],
-  [suppress_external_warnings=no])
+  [suppress_external_warnings=yes])
 
 AC_ARG_ENABLE([lcov],
   [AS_HELP_STRING([--enable-lcov],
