@@ -12,6 +12,7 @@
 #include <node/interface_ui.h>
 #include <node/context.h>
 #include <noui.h>
+#include <qml/nodemodel.h>
 #include <qt/guiconstants.h>
 #include <util/translation.h>
 #include <util/threadnames.h>
@@ -21,6 +22,7 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include <QStringLiteral>
 
 namespace {
@@ -52,7 +54,13 @@ int QmlGuiMain(int argc, char* argv[])
     boost::signals2::scoped_connection handler_init_message = ::uiInterface.InitMessage_connect(noui_InitMessage);
 
     QGuiApplication app(argc, argv);
-    QQmlApplicationEngine engine("src/qml/pages/stub.qml");
+
+    NodeModel node_model;
+
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("nodeModel", &node_model);
+
+    engine.load("src/qml/pages/stub.qml");
     if (engine.rootObjects().isEmpty()) {
         return EXIT_FAILURE;
     }
