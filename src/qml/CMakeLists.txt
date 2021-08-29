@@ -19,6 +19,7 @@ qt6_add_qml_module(bitcoin_qml
     util.cpp
   RESOURCE_PREFIX /qt/qml/
   QML_FILES
+    components/BlockCounter.qml
     pages/initerrormessage.qml
     pages/stub.qml
 )

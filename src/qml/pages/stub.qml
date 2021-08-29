@@ -2,8 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/license/mit/.
 
-import QtQml
+import QtQuick
 import QtQuick.Controls
+import "../components" as BitcoinCoreComponents
+
 
 ApplicationWindow {
     id: appWindow
@@ -13,4 +15,11 @@ ApplicationWindow {
     visible: true
 
     Component.onCompleted: nodeModel.startNodeInitializionThread();
+
+    BitcoinCoreComponents.BlockCounter {
+        id: blockCounter
+        anchors.centerIn: parent
+        height: parent.height / 3
+        blockHeight: nodeModel.blockTipHeight
+    }
 }
