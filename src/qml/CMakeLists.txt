@@ -13,6 +13,7 @@ qt6_add_qml_module(bitcoin_qml
     nodemodel.cpp
     util.cpp
   QML_FILES
+    components/BlockCounter.qml
     pages/initerrormessage.qml
     pages/stub.qml
 )
