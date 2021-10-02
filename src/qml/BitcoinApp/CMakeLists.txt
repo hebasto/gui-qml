@@ -15,6 +15,8 @@ qt6_add_qml_module(bitcoin_qml
   QML_FILES
     initerrormessage.qml
     stub.qml
+  RESOURCES
+    ${PROJECT_SOURCE_DIR}/src/qt/res/icons/bitcoin.png
 )
 
 add_subdirectory(Components)
