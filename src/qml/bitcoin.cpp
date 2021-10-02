@@ -4,6 +4,7 @@
 
 #include <qml/bitcoin.h>
 
+#include <chainparams.h>
 #include <common/args.h>
 #include <common/system.h>
 #include <init.h>
@@ -13,10 +14,12 @@
 #include <node/interface_ui.h>
 #include <node/context.h>
 #include <noui.h>
+#include <qml/imageprovider.h>
 #include <qml/nodemodel.h>
 #include <qml/util.h>
 #include <qt/guiconstants.h>
 #include <qt/initexecutor.h>
+#include <qt/networkstyle.h>
 #include <util/translation.h>
 #include <util/threadnames.h>
 
@@ -143,6 +146,11 @@ int QmlGuiMain(int argc, char* argv[])
     });
 
     QQmlApplicationEngine engine;
+
+    QScopedPointer<const NetworkStyle> network_style{NetworkStyle::instantiate(Params().GetChainType())};
+    assert(!network_style.isNull());
+    engine.addImageProvider(QStringLiteral("images"), new ImageProvider{network_style.data()});
+
     engine.rootContext()->setContextProperty("nodeModel", &node_model);
 
     engine.load("src/qml/pages/stub.qml");
