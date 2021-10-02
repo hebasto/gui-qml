@@ -18,6 +18,8 @@ qt6_add_qml_module(bitcoin_qml
     components/BlockCounter.qml
     pages/initerrormessage.qml
     pages/stub.qml
+  RESOURCES
+    ../qt/res/icons/bitcoin.png
 )
 
 target_compile_definitions(bitcoin_qml
