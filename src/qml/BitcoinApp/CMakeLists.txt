@@ -17,6 +17,8 @@ qt6_add_qml_module(bitcoin_qml
     stub.qml
   RESOURCES
     ${PROJECT_SOURCE_DIR}/src/qt/res/icons/bitcoin.png
+    res/fonts/Inter-Regular.otf
+    res/fonts/Inter-SemiBold.otf
 )
 
 add_subdirectory(Components)
