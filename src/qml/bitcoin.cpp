@@ -32,7 +32,6 @@
 #include <QQmlContext>
 #include <QQuickWindow>
 #include <QString>
-#include <QStringLiteral>
 
 QT_BEGIN_NAMESPACE
 class QMessageLogContext;
