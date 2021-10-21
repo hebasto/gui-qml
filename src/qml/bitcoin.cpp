@@ -33,6 +33,7 @@
 #include <QQmlContext>
 #include <QQuickWindow>
 #include <QString>
+#include <QStyleHints>
 
 QT_BEGIN_NAMESPACE
 class QMessageLogContext;
@@ -82,6 +83,7 @@ int QmlGuiMain(int argc, char* argv[])
     std::tie(argc, argv) = winArgs.get();
 #endif
 
+    QGuiApplication::styleHints()->setTabFocusBehavior(Qt::TabFocusAllControls);
     QGuiApplication app(argc, argv);
 
     auto handler_message_box = ::uiInterface.ThreadSafeMessageBox_connect(InitErrorMessageBox);
