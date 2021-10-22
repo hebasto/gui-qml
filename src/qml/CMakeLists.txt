@@ -18,6 +18,7 @@ qt6_add_qml_module(bitcoin_qml
     components/BlockCounter.qml
     components/ConnectionOptions.qml
     controls/OptionButton.qml
+    controls/ProgressIndicator.qml
     pages/initerrormessage.qml
     pages/stub.qml
   RESOURCES
