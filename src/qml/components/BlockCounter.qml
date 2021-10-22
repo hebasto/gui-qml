@@ -16,6 +16,6 @@ Label {
     padding: 16
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
-    font.pixelSize: height / 3
+    font.pixelSize: 20
     text: blockHeight
 }
