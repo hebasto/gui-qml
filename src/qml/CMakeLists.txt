@@ -15,6 +15,7 @@ qt6_add_qml_module(bitcoin_qml
     util.cpp
   QML_FILES
     components/BlockCounter.qml
+    components/ConnectionOptions.qml
     controls/OptionButton.qml
     pages/initerrormessage.qml
     pages/stub.qml
