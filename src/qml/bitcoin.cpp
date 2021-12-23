@@ -49,6 +49,9 @@ Q_IMPORT_PLUGIN(QtQuick2WindowPlugin)
 Q_IMPORT_PLUGIN(QtQuickLayoutsPlugin);
 Q_IMPORT_PLUGIN(QtQuickControls2Plugin);
 Q_IMPORT_PLUGIN(QtQuickTemplates2Plugin);
+#if defined(QT_QPA_PLATFORM_ANDROID)
+Q_IMPORT_PLUGIN(QAndroidPlatformIntegrationPlugin)
+#endif
 #endif
 
 namespace {
