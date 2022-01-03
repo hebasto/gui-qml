@@ -25,6 +25,7 @@ qt6_add_qml_module(bitcoin_qml
     controls/ContinueButton.qml
     controls/Header.qml
     controls/OptionButton.qml
+    controls/OptionSwitch.qml
     controls/ProgressIndicator.qml
     pages/initerrormessage.qml
     pages/stub.qml
