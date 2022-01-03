@@ -22,6 +22,7 @@ qt6_add_qml_module(bitcoin_qml
   QML_FILES
     components/BlockCounter.qml
     components/ConnectionOptions.qml
+    controls/ContinueButton.qml
     controls/Header.qml
     controls/OptionButton.qml
     controls/ProgressIndicator.qml
