@@ -37,6 +37,7 @@ qt6_add_qml_module(bitcoin_qml
     controls/Setting.qml
     controls/TextButton.qml
     controls/Theme.qml
+    controls/Wizard.qml
     pages/initerrormessage.qml
     pages/stub.qml
   RESOURCES
