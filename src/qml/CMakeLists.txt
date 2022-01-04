@@ -23,6 +23,7 @@ qt6_add_qml_module(bitcoin_qml
     components/BlockCounter.qml
     components/ConnectionOptions.qml
     components/ConnectionSettings.qml
+    components/StorageOptions.qml
     controls/ContinueButton.qml
     controls/Header.qml
     controls/OptionButton.qml
