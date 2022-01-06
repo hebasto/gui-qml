@@ -9,6 +9,10 @@ endif()
 
 set(CMAKE_AUTOMOC ON)
 
+set_source_files_properties(controls/Theme.qml PROPERTIES
+    QT_QML_SINGLETON_TYPE TRUE
+)
+
 qt6_add_qml_module(bitcoin_qml
   URI qml
   VERSION 1.0
@@ -32,6 +36,7 @@ qt6_add_qml_module(bitcoin_qml
     controls/ProgressIndicator.qml
     controls/Setting.qml
     controls/TextButton.qml
+    controls/Theme.qml
     pages/initerrormessage.qml
     pages/stub.qml
   RESOURCES
