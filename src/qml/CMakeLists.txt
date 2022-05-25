@@ -41,6 +41,7 @@ qt6_add_qml_module(bitcoin_qml
     pages/stub.qml
   RESOURCES
     ../qt/res/icons/bitcoin.png
+    res/icons/info.png
 )
 
 target_compile_definitions(bitcoin_qml
