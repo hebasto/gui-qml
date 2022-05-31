@@ -24,9 +24,11 @@ qt6_add_qml_module(bitcoin_qml
     util.cpp
   RESOURCE_PREFIX /qt/qml/
   QML_FILES
+    components/AboutOptions.qml
     components/BlockCounter.qml
     components/ConnectionOptions.qml
     components/ConnectionSettings.qml
+    components/DeveloperOptions.qml
     components/StorageOptions.qml
     controls/ContinueButton.qml
     controls/Header.qml
@@ -40,6 +42,10 @@ qt6_add_qml_module(bitcoin_qml
     controls/Theme.qml
     controls/Wizard.qml
     pages/initerrormessage.qml
+    pages/onboarding/onboarding01.qml
+    pages/onboarding/onboarding01a.qml
+    pages/onboarding/onboarding01b.qml
+    pages/onboarding/onboarding01c.qml
     pages/stub.qml
   RESOURCES
     ../qt/res/icons/bitcoin.png
