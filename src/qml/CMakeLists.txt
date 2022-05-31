@@ -31,6 +31,7 @@ qt6_add_qml_module(bitcoin_qml
     components/DeveloperOptions.qml
     components/StorageLocations.qml
     components/StorageOptions.qml
+    components/StorageSettings.qml
     controls/ContinueButton.qml
     controls/Header.qml
     controls/Information.qml
@@ -50,6 +51,9 @@ qt6_add_qml_module(bitcoin_qml
     pages/onboarding/onboarding02.qml
     pages/onboarding/onboarding03.qml
     pages/onboarding/onboarding04.qml
+    pages/onboarding/onboarding05.qml
+    pages/onboarding/onboarding05a.qml
+    pages/onboarding/onboarding05b.qml
     pages/stub.qml
   RESOURCES
     ../qt/res/icons/bitcoin.png
