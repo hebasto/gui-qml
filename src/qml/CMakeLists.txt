@@ -30,6 +30,7 @@ qt6_add_qml_module(bitcoin_qml
     components/StorageOptions.qml
     controls/ContinueButton.qml
     controls/Header.qml
+    controls/Information.qml
     controls/OptionButton.qml
     controls/OptionSwitch.qml
     controls/PageIndicator.qml
