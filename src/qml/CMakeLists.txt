@@ -54,6 +54,9 @@ qt6_add_qml_module(bitcoin_qml
     pages/onboarding/onboarding05.qml
     pages/onboarding/onboarding05a.qml
     pages/onboarding/onboarding05b.qml
+    pages/onboarding/onboarding06.qml
+    pages/onboarding/onboarding06a.qml
+    pages/onboarding/onboarding06b.qml
     pages/stub.qml
   RESOURCES
     ../qt/res/icons/bitcoin.png
