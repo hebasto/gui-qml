@@ -319,6 +319,27 @@ task:
     type: "application/gzip"
 
 task:
+  name: 'macOS M1 [gui, no tests] [focal]'
+  << : *BASE_TEMPLATE
+  macos_sdk_cache:
+    folder: "depends/SDKs/$MACOS_SDK"
+    fingerprint_key: "$MACOS_SDK"
+  << : *MAIN_TEMPLATE
+  alias: macos
+  container:
+    image: ubuntu:focal
+  env:
+    MACOS_SDK: "Xcode-12.2-12B45b-extracted-SDK-with-libcxx-headers"
+    << : *CIRRUS_EPHEMERAL_WORKER_TEMPLATE_ENV
+    FILE_ENV: "./ci/test/00_setup_env_mac.sh"
+  copy_artifacts_script:
+    - cp ci/scratch/build/bitcoin-x86_64-apple-darwin/src/qt/bitcoin-qt insecure_mac_M1_gui
+    - tar -czf insecure_mac_gui.tar.gz insecure_mac_M1_gui
+  insecure_mac_gui_artifacts:
+    path: "insecure_mac_M1_gui.tar.gz"
+    type: "application/gzip"
+
+task:
   name: 'macOS 12 native [gui, system sqlite only] [no depends]'
   brew_install_script:
     - brew install boost libevent qt@5 miniupnpc libnatpmp ccache zeromq qrencode libtool automake gnu-getopt
