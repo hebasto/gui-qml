@@ -61,6 +61,7 @@ qt6_add_qml_module(bitcoin_qml
     pages/stub.qml
   RESOURCES
     ../qt/res/icons/bitcoin.png
+    res/icons/arrow-up.png
     res/icons/caret-left.png
     res/icons/caret-right.png
     res/icons/export.png
