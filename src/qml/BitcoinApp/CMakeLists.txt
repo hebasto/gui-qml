@@ -62,4 +62,6 @@ target_link_libraries(bitcoin_qml
   PUBLIC
     Qt6::Widgets
     Qt6::Quick
+  PRIVATE
+    univalue
 )
