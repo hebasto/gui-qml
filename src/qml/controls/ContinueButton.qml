@@ -6,6 +6,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Button {
+    objectName: "continueButton"
     font.family: "Inter"
     font.styleName: "Semi Bold"
     font.pixelSize: 18
