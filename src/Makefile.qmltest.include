@@ -14,11 +14,10 @@ qml_test_test_bitcoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN
 
 qml_test_test_bitcoin_qt_SOURCES = \
   qml/test/onboardingtests.cpp \
-  qml/bitcoin_qml.qrc \
   qml/test/testimageprovider.cpp \
   $(TEST_QML_H)
 
-nodist_qml_test_test_bitcoin_qt_SOURCES = $(TEST_QML_MOC_CPP) $(QML_QRC_CPP)
+nodist_qml_test_test_bitcoin_qt_SOURCES = $(TEST_QML_MOC_CPP)
 
 qml_test_test_bitcoin_qt_LDADD = $(QT_QUICKTEST_LIBS) $(QT_TEST_LIBS) $(QT_LIBS)
 qml_test_test_bitcoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
