@@ -39,6 +39,14 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Setting {
                     Layout.fillWidth: true
+                    header: qsTr("User interface language")
+                    actionItem: ValueInput {
+                        description: optionsModel.language
+                        onEditingFinished: optionsModel.language = text
+                    }
+                }
+                Setting {
+                    Layout.fillWidth: true
                     header: qsTr("Dark Mode")
                     actionItem: OptionSwitch {
                         checked: Theme.dark

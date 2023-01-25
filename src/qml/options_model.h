@@ -17,6 +17,7 @@ class Node;
 class OptionsQmlModel : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
     Q_PROPERTY(bool listen READ listen WRITE setListen NOTIFY listenChanged)
     Q_PROPERTY(bool natpmp READ natpmp WRITE setNatpmp NOTIFY natpmpChanged)
     Q_PROPERTY(bool prune READ prune WRITE setPrune NOTIFY pruneChanged)
@@ -27,6 +28,8 @@ class OptionsQmlModel : public QObject
 public:
     explicit OptionsQmlModel(interfaces::Node& node);
 
+    QString language() const { return m_language; }
+    void setLanguage(QString new_language);
     bool listen() const { return m_listen; }
     void setListen(bool new_listen);
     bool natpmp() const { return m_natpmp; }
@@ -41,6 +44,7 @@ public:
     void setUpnp(bool new_upnp);
 
 Q_SIGNALS:
+    void languageChanged(QString new_language);
     void listenChanged(bool new_listen);
     void natpmpChanged(bool new_natpmp);
     void pruneChanged(bool new_prune);
@@ -52,6 +56,7 @@ private:
     interfaces::Node& m_node;
 
     // Properties that are exposed to QML.
+    QString m_language;
     bool m_listen;
     bool m_natpmp;
     bool m_prune;

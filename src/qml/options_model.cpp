@@ -16,9 +16,20 @@
 OptionsQmlModel::OptionsQmlModel(interfaces::Node& node)
     : m_node{node}
 {
+    m_language = QString::fromStdString(SettingToString(m_node.getPersistentSetting("lang"), ""));
+
     int64_t prune_value{SettingToInt(m_node.getPersistentSetting("prune"), 0)};
     m_prune = (prune_value > 1);
     m_prune_size_gb = m_prune ? PruneMiBtoGB(prune_value) : DEFAULT_PRUNE_TARGET_GB;
+}
+
+void OptionsQmlModel::setLanguage(QString new_language)
+{
+    if (new_language != m_language) {
+        m_language = new_language;
+        m_node.updateRwSetting("lang", util::SettingsValue{new_language.toStdString()});
+        Q_EMIT languageChanged(new_language);
+    }
 }
 
 void OptionsQmlModel::setListen(bool new_listen)
