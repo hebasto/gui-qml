@@ -2,6 +2,39 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en">
 <context>
+    <name>AboutOptions</name>
+    <message>
+        <location filename="../../qml/components/AboutOptions.qml" line="+14"/>
+        <source>Website</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Source code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Developer options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Only use these if you have development experience</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AddressBookPage</name>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+37"/>
@@ -1115,6 +1148,72 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
 </context>
 <context>
+    <name>ConnectionOptions</name>
+    <message>
+        <location filename="../../qml/components/ConnectionOptions.qml" line="+18"/>
+        <source>Fast always on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loads quickly at all times and uses as much cellular data as needed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Slow always on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loads at all times with reduced cellular data usage.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Only when on Wi-Fi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loads quickly when on wi-fi and pauses when on cellular data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ConnectionSettings</name>
+    <message>
+        <location filename="../../qml/components/ConnectionSettings.qml" line="+14"/>
+        <source>Enable listening</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Allows incoming connections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Map port using UPnP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Map port using NAT-PMP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Enable RPC server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Proxy settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CreateWalletActivity</name>
     <message>
         <location filename="../walletcontroller.cpp" line="+244"/>
@@ -1235,6 +1334,29 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <location line="+14"/>
         <source>Compiled without external signing support (required for external signing)</source>
         <extracomment>&quot;External signing&quot; means using devices such as hardware wallets.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DeveloperOptions</name>
+    <message>
+        <location filename="../../qml/components/DeveloperOptions.qml" line="+14"/>
+        <source>Developer documentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Database cache size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Script verification threads</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Dark Mode</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1575,6 +1697,210 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
 </context>
 <context>
+    <name>NodeSettings</name>
+    <message>
+        <location filename="../../qml/pages/node/NodeSettings.qml" line="+42"/>
+        <source>Dark Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <location line="+12"/>
+        <location line="+12"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingBlockclock</name>
+    <message>
+        <location filename="../../qml/pages/onboarding/OnboardingBlockclock.qml" line="+13"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>The block clock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The Bitcoin network targets a new block every
+10 minutes. Sometimes it&apos;s faster and sometimes slower.
+
+The block clock indicates each block on a dial
+that represents the current day.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingConnection</name>
+    <message>
+        <location filename="../../qml/pages/onboarding/OnboardingConnection.qml" line="+23"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Starting initial download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The application will connect to the Bitcoin network and start downloading and verifying transactions.
+
+This may take several hours, or even days, based on your connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Connection settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingCover</name>
+    <message>
+        <location filename="../../qml/pages/onboarding/OnboardingCover.qml" line="+38"/>
+        <source>Bitcoin Core App</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Be part of the Bitcoin network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>100% open-source &amp; open-design</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingStorageAmount</name>
+    <message>
+        <location filename="../../qml/pages/onboarding/OnboardingStorageAmount.qml" line="+23"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Data retrieved from the Bitcoin network is stored on your device.
+You have 500GB of storage available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Detailed settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingStorageLocation</name>
+    <message>
+        <location filename="../../qml/pages/onboarding/OnboardingStorageLocation.qml" line="+15"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Storage location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Where do you want to store the downloaded block data?
+You need a minimum of 1GB of storage.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingStrengthen</name>
+    <message>
+        <location filename="../../qml/pages/onboarding/OnboardingStrengthen.qml" line="+13"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Strengthen bitcoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bitcoin Core runs a full Bitcoin node which verifies the rules of the network are being followed.
+
+Users running nodes is what makes bitcoin
+so resilient and trustworthy.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <location filename="../forms/openuridialog.ui" line="+14"/>
@@ -1620,6 +1946,14 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <location line="+3"/>
         <source>Opening Wallet &lt;b&gt;%1&lt;/b&gt;…</source>
         <extracomment>Descriptive text of the open wallet progress window which indicates to the user which wallet is currently being opened.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OptionButton</name>
+    <message>
+        <location filename="../../qml/controls/OptionButton.qml" line="+63"/>
+        <source>Recommended</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4170,6 +4504,51 @@ Note:  Since the fee is calculated on a per-byte basis, a fee rate of &quot;100 
     </message>
 </context>
 <context>
+    <name>SettingsAbout</name>
+    <message>
+        <location filename="../../qml/pages/settings/SettingsAbout.qml" line="+24"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Bitcoin Core is an open source project.
+If you find it useful, please contribute.
+
+ This is experimental software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsConnection</name>
+    <message>
+        <location filename="../../qml/pages/settings/SettingsConnection.qml" line="+16"/>
+        <source>Connection settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDeveloper</name>
+    <message>
+        <location filename="../../qml/pages/settings/SettingsDeveloper.qml" line="+14"/>
+        <source>Developer options</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <location filename="../../qml/pages/settings/SettingsStorage.qml" line="+14"/>
+        <source>Storage settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ShutdownWindow</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+85"/>
@@ -4392,6 +4771,65 @@ Note:  Since the fee is calculated on a per-byte basis, a fee rate of &quot;100 
     <message>
         <location line="+1"/>
         <source>press q to shutdown</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StorageLocations</name>
+    <message>
+        <location filename="../../qml/components/StorageLocations.qml" line="+18"/>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your application directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Choose the directory and storage device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StorageOptions</name>
+    <message>
+        <location filename="../../qml/components/StorageOptions.qml" line="+18"/>
+        <source>Reduce storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Uses about 2GB. For simple wallet use.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Store all data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Uses about 550GB. Support the network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StorageSettings</name>
+    <message>
+        <location filename="../../qml/components/StorageSettings.qml" line="+14"/>
+        <source>Store recent blocks only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Storage limit (GB)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6210,6 +6648,27 @@ The wallet might have been tampered with or created with malicious intent.
     <message>
         <location line="+23"/>
         <source>Settings file could not be written</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>initerrormessage</name>
+    <message>
+        <location filename="../../qml/pages/initerrormessage.qml" line="+27"/>
+        <source>There was an issue starting up.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../../qml/pages/main.qml" line="+65"/>
+        <source>Done</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
