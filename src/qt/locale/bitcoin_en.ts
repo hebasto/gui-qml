@@ -313,7 +313,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
 <context>
     <name>BitcoinApplication</name>
     <message>
-        <location filename="../bitcoin.cpp" line="+288"/>
+        <location filename="../bitcoin.cpp" line="+282"/>
         <source>Settings file %1 might be corrupt or invalid.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1661,7 +1661,12 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+231"/>
+        <location line="+132"/>
+        <source>Full path to a %1 compatible script (e.g. C:\Downloads\hwi.exe or /Users/you/Downloads/hwi.py). Beware: malware can steal your coins!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+99"/>
         <location line="+187"/>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
         <translation type="unfinished"></translation>
@@ -1817,12 +1822,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Full path to a Bitcoin Core compatible script (e.g. C:\Downloads\hwi.exe or /Users/you/Downloads/hwi.py). Beware: malware can steal your coins!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+32"/>
+        <location line="+42"/>
         <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
@@ -2006,7 +2006,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="+96"/>
+        <location filename="../optionsdialog.cpp" line="+98"/>
         <source>Compiled without external signing support (required for external signing)</source>
         <extracomment>&quot;External signing&quot; means using devices such as hardware wallets.</extracomment>
         <translation type="unfinished"></translation>
@@ -2487,7 +2487,7 @@ If you are receiving this error you should request the merchant provide a BIP21 
         <translation type="unfinished">Amount</translation>
     </message>
     <message>
-        <location filename="../guiutil.cpp" line="+129"/>
+        <location filename="../guiutil.cpp" line="+136"/>
         <source>Enter a Bitcoin address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2497,7 +2497,7 @@ If you are receiving this error you should request the merchant provide a BIP21 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+256"/>
+        <location line="+257"/>
         <source>Unroutable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2675,7 +2675,7 @@ If you are receiving this error you should request the merchant provide a BIP21 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+393"/>
+        <location line="+388"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2908,7 +2908,17 @@ If you are receiving this error you should request the merchant provide a BIP21 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+124"/>
+        <location line="+72"/>
+        <source>Whether we relay transactions to this peer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Transaction Relay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+49"/>
         <source>Starting Block</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3030,17 +3040,7 @@ If you are receiving this error you should request the merchant provide a BIP21 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
-        <source>Whether the peer requested us to relay transactions.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Wants Tx Relay</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+23"/>
+        <location line="+52"/>
         <source>High bandwidth BIP152 compact block relay: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3308,7 +3308,7 @@ If you are receiving this error you should request the merchant provide a BIP21 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+316"/>
+        <location line="+320"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3328,7 +3328,7 @@ If you are receiving this error you should request the merchant provide a BIP21 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-321"/>
+        <location line="-325"/>
         <source>Executing command using &quot;%1&quot; wallet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3633,7 +3633,7 @@ For more information on using this console, type %6.
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+757"/>
+        <location filename="../sendcoinsdialog.cpp" line="+759"/>
         <source>Send Coins</source>
         <translation>Send Coins</translation>
     </message>
@@ -3820,7 +3820,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee rate of &quot;100 
         <translation>S&amp;end</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-658"/>
+        <location filename="../sendcoinsdialog.cpp" line="-660"/>
         <source>Copy quantity</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3887,7 +3887,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee rate of &quot;100 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+90"/>
+        <location line="+92"/>
         <source> from wallet &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4385,7 +4385,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee rate of &quot;100 
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="+187"/>
+        <location filename="../splashscreen.cpp" line="+177"/>
         <source>(press q to shutdown and continue later)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4956,7 +4956,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee rate of &quot;100 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+172"/>
+        <location line="+169"/>
         <source>Range:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5053,19 +5053,20 @@ Go to File &gt; Open Wallet to load a wallet.
     <name>WalletModel</name>
     <message>
         <location filename="../walletmodel.cpp" line="+232"/>
+        <location line="+13"/>
         <source>Send Coins</source>
         <translation type="unfinished">Send Coins</translation>
     </message>
     <message>
-        <location line="+263"/>
-        <location line="+52"/>
+        <location line="+255"/>
+        <location line="+55"/>
         <location line="+15"/>
         <location line="+5"/>
         <source>Fee bump error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-72"/>
+        <location line="-75"/>
         <source>Increasing transaction fee failed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5096,12 +5097,12 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+5"/>
         <source>Confirm fee bump</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+23"/>
         <source>Can&apos;t draft transaction.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5188,17 +5189,12 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+5"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+15"/>
         <source>Cannot downgrade wallet from version %i to version %i. Wallet version unchanged.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5213,12 +5209,12 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+7"/>
         <source>Distributed under the MIT software license, see the accompanying file %s or %s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+11"/>
         <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5288,7 +5284,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+16"/>
         <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5328,17 +5324,12 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+11"/>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5368,7 +5359,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+7"/>
         <source>Unknown wallet file format &quot;%s&quot; provided. Please provide one of &quot;bdb&quot; or &quot;sqlite&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5443,17 +5434,12 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-79"/>
+        <location line="-86"/>
         <source>The -txindex upgrade started by a previous version cannot be completed. Restart with the previous version or run a full -reindex.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-122"/>
-        <source>%s request to listen on port %u. This port is considered &quot;bad&quot; and thus it is unlikely that any Bitcoin Core peers connect to it. See doc/p2p-bad-ports.md for details and a full list.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="-126"/>
         <source>-reindex-chainstate option is not compatible with -blockfilterindex. Please temporarily disable blockfilterindex while using -reindex-chainstate, or replace -reindex-chainstate with -reindex to fully rebuild all indexes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5468,22 +5454,17 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>Assumed-valid: last wallet synchronisation goes beyond available block data. You need to wait for the background validation chain to download more blocks.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>Cannot provide specific connections and have addrman find outgoing connections at the same time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+13"/>
         <source>Error loading %s: External signer wallet being loaded without external signer support compiled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+14"/>
         <source>Error: Address book data in wallet cannot be identified to belong to migrated wallets</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5513,7 +5494,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+24"/>
         <source>Outbound connections restricted to Tor (-onlynet=onion) but the proxy for reaching the Tor network is explicitly forbidden: -onion=0</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5523,7 +5504,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+69"/>
         <source>Unrecognized descriptor found. Loading wallet %s
 
 The wallet might had been created on a newer version.
@@ -5604,12 +5585,50 @@ Unable to restore backup of wallet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Error initializing wallet database environment %s!</source>
+        <location line="-230"/>
+        <source>%s request to listen on port %u. This port is considered &quot;bad&quot; and thus it is unlikely that any peer will connect to it. See doc/p2p-bad-ports.md for details and a full list.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+31"/>
+        <source>Disk space for %s may not accommodate the block files. Approximately %u GB of data will be stored in this directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Error loading wallet. Wallet requires blocks to be downloaded, and software does not currently support loading wallets while blocks are being downloaded out of order when using assumeutxo snapshots. Wallet should be able to load successfully after node sync reaches height %s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+63"/>
+        <source>Outbound connections restricted to CJDNS (-onlynet=cjdns) but -cjdnsreachable is not provided</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Outbound connections restricted to i2p (-onlynet=i2p) but -i2psam is not provided</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>The inputs size exceeds the maximum weight. Please try sending a smaller amount or manually consolidating your wallet&apos;s UTXOs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>The preselected coins total amount does not cover the transaction target. Please allow other inputs to be automatically selected or include more coins manually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Unexpected legacy entry in descriptor wallet found. Loading wallet %s
+
+The wallet might have been tampered with or created with malicious intent.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+60"/>
         <source>Error loading %s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5646,6 +5665,11 @@ Unable to restore backup of wallet.</source>
     <message>
         <location line="+1"/>
         <source>Error reading next record from wallet database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error: Cannot extract destination from the generated scriptpubkey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5845,6 +5869,16 @@ Unable to restore backup of wallet.</source>
     </message>
     <message>
         <location line="+1"/>
+        <source>Invalid port specified in %s: &apos;%s&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Invalid pre-selected input %s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Listening for incoming connections failed (listen returned error %s)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5891,6 +5925,16 @@ Unable to restore backup of wallet.</source>
     <message>
         <location line="+1"/>
         <source>Not enough file descriptors available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Not found pre-selected input %s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Not solvable pre-selected input %s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6159,7 +6203,7 @@ Unable to restore backup of wallet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="-519"/>
+        <location filename="../bitcoin.cpp" line="-514"/>
         <source>Settings file could not be read</source>
         <translation type="unfinished"></translation>
     </message>
