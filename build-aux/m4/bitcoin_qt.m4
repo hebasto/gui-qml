@@ -164,7 +164,7 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
         QT_LIBS="$QT_LIBS -L$qt_plugin_path/../qml/QtQuick/Controls"
       fi
       if test -d "$qt_plugin_path/../qml/QtQuick/Dialogs"; then
-         QT_LIBS="$QT_LIBS -L$qt_plugin_path/../qml/QtQuick/Dialogs"
+         QT_LIBS="$QT_LIBS -L$qt_plugin_path/../qml/QtQuick/Dialogs -L$qt_plugin_path/../qml/QtQuick/Dialogs/Private"
       fi
 
       dnl qtquickcontrols2 module paths
@@ -214,6 +214,7 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
         _BITCOIN_QT_CHECK_STATIC_PLUGIN([QtQuickLayoutsPlugin], [-lqquicklayoutsplugin])
         dnl qtquickcontrols module plugins
         _BITCOIN_QT_CHECK_STATIC_PLUGIN([QtQuick2DialogsPlugin], [-ldialogplugin])
+        _BITCOIN_QT_CHECK_STATIC_PLUGIN([QtQuick2DialogsPrivatePlugin], [-ldialogsprivateplugin])
         _BITCOIN_QT_CHECK_STATIC_PLUGIN([QtQuickControls1Plugin], [-lqtquickcontrolsplugin])
         dnl qtquickcontrols2 module plugins
         _BITCOIN_QT_CHECK_STATIC_PLUGIN([QtQuickControls2Plugin], [-lqtquickcontrols2plugin])
