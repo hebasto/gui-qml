@@ -189,7 +189,7 @@ jobs:
       - name: Build depends
         run: |
           cd depends
-          ANDROID_SDK=$ANDROID_HOME ANDROID_NDK=$ANDROID_NDK make -j$(nproc) HOST=aarch64-linux-android ANDROID_API_LEVEL=31 ANDROID_TOOLCHAIN_BIN=${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/bin
+          ANDROID_SDK=$ANDROID_HOME ANDROID_NDK=${ANDROID_HOME}/ndk/23.2.8568313 make -j$(nproc) HOST=aarch64-linux-android ANDROID_API_LEVEL=28 ANDROID_TOOLCHAIN_BIN=${ANDROID_HOME}/ndk/23.2.8568313/toolchains/llvm/prebuilt/linux-x86_64/bin
 
       # - name: Restore Ccache cache
       #   uses: actions/cache/restore@v3
