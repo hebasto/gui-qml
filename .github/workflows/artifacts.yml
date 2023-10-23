@@ -174,7 +174,7 @@ jobs:
       - name: Depends fingerprint
         id: depends_fingerprint
         run: |
-          echo ${{ env.ANDROID_NDK }} > depends/android-ndk-version
+          echo $ANDROID_NDK > depends/android-ndk-version
           echo "hash=${{ hashFiles('./depends/**') }}" >> "$GITHUB_OUTPUT"
 
       - name: Depends cache
@@ -189,7 +189,7 @@ jobs:
       - name: Build depends
         run: |
           cd depends
-          ANDROID_SDK=${{ env.ANDROID_HOME }} make -j$(nproc) HOST=aarch64-linux-android ANDROID_API_LEVEL=28 ANDROID_TOOLCHAIN_BIN=${{ env.ANDROID_NDK }}/toolchains/llvm/prebuilt/linux-x86_64/bin
+          ANDROID_SDK=$ANDROID_HOME make -j$(nproc) HOST=aarch64-linux-android ANDROID_API_LEVEL=28 ANDROID_TOOLCHAIN_BIN=${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/bin
 
       # - name: Restore Ccache cache
       #   uses: actions/cache/restore@v3
