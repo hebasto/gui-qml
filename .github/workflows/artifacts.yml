@@ -56,7 +56,7 @@ jobs:
       ANDROID_BUILD_TOOLS_VERSION: '28.0.3'
       ANDROID_NDK_VERSION: '23.2.8568313'
       ANDROID_TOOLS_URL: 'https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip'
-      # CCACHE_MAXSIZE: '30M'
+      CCACHE_MAXSIZE: '50M'
 
     steps:
       - name: Checkout
@@ -65,7 +65,7 @@ jobs:
       - name: Install dependency packages
         run: |
           apt-get update
-          apt-get install --no-install-recommends -y autoconf automake ca-certificates ccache curl g++ lbzip2 libtool make openjdk-8-jdk patch pkg-config python3 unzip xz-utils
+          apt-get install --no-install-recommends -y autoconf automake ca-certificates ccache curl g++ gradle lbzip2 libtool make openjdk-8-jdk patch pkg-config python3 tree unzip xz-utils
           echo "CCACHE_DIR=/tmp/ccache" >> "$GITHUB_ENV"
 
       - name: Install Android tools
@@ -74,14 +74,6 @@ jobs:
           mkdir -p ${{ env.ANDROID_HOME }}
           unzip -o android-tools.zip -d ${{ env.ANDROID_HOME }}
           yes | ${{ env.ANDROID_HOME }}/cmdline-tools/bin/sdkmanager --sdk_root=${{ env.ANDROID_HOME }} --install "build-tools;${{ env.ANDROID_BUILD_TOOLS_VERSION }}" "platform-tools" "platforms;android-31" "platforms;android-${{ env.ANDROID_API_LEVEL }}" "ndk;${{ env.ANDROID_NDK_VERSION }}"
-
-      # - name: Install dependency packages
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install ccache
-      #     echo "CCACHE_DIR=${{ runner.temp }}/ccache" >> "$GITHUB_ENV"
-      #   # sudo apt-get install ccache ${{ matrix.host.packages }}
-      #   # echo "CCACHE_DIR=${{ runner.temp }}/ccache" >> "$GITHUB_ENV"
 
       - name: Depends fingerprint
         id: depends_fingerprint
@@ -131,6 +123,11 @@ jobs:
           path: ${{ env.CCACHE_DIR }}
           key: aarch64-linux-android-ccache-${{ github.run_id }}
           # key: ${{ matrix.host.triplet }}-ccache-${{ github.run_id }}
+
+      - name: Build APK
+        run: |
+          make -j$(nproc) -C src/qt apk
+
 
       # # - uses: actions/upload-artifact@v3
       # #   with:
