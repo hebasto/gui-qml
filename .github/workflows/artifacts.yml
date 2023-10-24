@@ -51,15 +51,25 @@ jobs:
     #         artifact: 'unsecure_windows_gui'
 
     env:
+      ANDROID_HOME: 'Android'
       ANDROID_API_LEVEL: '28'
       ANDROID_BUILD_TOOLS_VERSION: '28.0.3'
       ANDROID_NDK_VERSION: '23.2.8568313'
+      ANDROID_TOOLS_URL: 'https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip'
       CCACHE_MAXSIZE: '30M'
 
     steps:
       - run: |
+          curl --location --fail ${{ env.ANDROID_TOOLS_URL }} -o android-tools.zip
+          mkdir -p ${{ env.ANDROID_HOME }}
+          unzip -o android-tools.zip -d ${{ env.ANDROID_HOME }}
+          yes | ${{ env.ANDROID_HOME }}/cmdline-tools/bin/sdkmanager --sdk_root=${{ env.ANDROID_HOME }} --install "build-tools;${{ env.ANDROID_BUILD_TOOLS_VERSION }}" "platform-tools" "platforms;android-31" "platforms;android-${{ env.ANDROID_API_LEVEL }}" "ndk;${{ env.ANDROID_NDK_VERSION }}"
+
+
+      - run: |
           echo ${{ env.ANDROID_BUILD_TOOLS_VERSION }}
           echo ${{ env.ANDROID_NDK_VERSION }}
+          dir ${{ env.ANDROID_HOME }}
 
       # - name: Checkout
       #   uses: actions/checkout@v4
