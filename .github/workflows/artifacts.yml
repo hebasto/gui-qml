@@ -76,8 +76,8 @@ jobs:
           echo ${{ env.ANDROID_NDK_VERSION }}
           dir ${{ env.ANDROID_HOME }}
 
-      # - name: Checkout
-      #   uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       # - name: Install dependency packages
       #   run: |
@@ -87,11 +87,11 @@ jobs:
       #   # sudo apt-get install ccache ${{ matrix.host.packages }}
       #   # echo "CCACHE_DIR=${{ runner.temp }}/ccache" >> "$GITHUB_ENV"
 
-      # - name: Depends fingerprint
-      #   id: depends_fingerprint
-      #   run: |
-      #     echo $ANDROID_NDK | tee depends/android-ndk-version
-      #     echo "hash=${{ hashFiles('./depends/**') }}" >> "$GITHUB_OUTPUT"
+      - name: Depends fingerprint
+        id: depends_fingerprint
+        run: |
+          echo ${{ env.ANDROID_NDK_VERSION }} > depends/android-ndk-version
+          echo "hash=${{ hashFiles('./depends/**') }}" >> "$GITHUB_OUTPUT"
 
       # - name: Depends cache
       #   id: depends_cache
