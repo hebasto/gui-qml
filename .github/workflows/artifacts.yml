@@ -62,7 +62,7 @@ jobs:
       - name: Install dependency packages
         run: |
           apt-get update
-          apt-get install --no-install-recommends -y ca-certificates curl openjdk-8-jdk unzip
+          apt-get install --no-install-recommends -y ca-certificates curl make openjdk-8-jdk unzip
 
       - name: Install Android tools
         run: |
@@ -70,11 +70,6 @@ jobs:
           mkdir -p ${{ env.ANDROID_HOME }}
           unzip -o android-tools.zip -d ${{ env.ANDROID_HOME }}
           yes | ${{ env.ANDROID_HOME }}/cmdline-tools/bin/sdkmanager --sdk_root=${{ env.ANDROID_HOME }} --install "build-tools;${{ env.ANDROID_BUILD_TOOLS_VERSION }}" "platform-tools" "platforms;android-31" "platforms;android-${{ env.ANDROID_API_LEVEL }}" "ndk;${{ env.ANDROID_NDK_VERSION }}"
-
-      - run: |
-          echo ${{ env.ANDROID_BUILD_TOOLS_VERSION }}
-          echo ${{ env.ANDROID_NDK_VERSION }}
-          dir ${{ env.ANDROID_HOME }}
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -93,19 +88,19 @@ jobs:
           echo ${{ env.ANDROID_NDK_VERSION }} > depends/android-ndk-version
           echo "hash=${{ hashFiles('./depends/**') }}" >> "$GITHUB_OUTPUT"
 
-      # - name: Depends cache
-      #   id: depends_cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: |
-      #       depends/built
-      #     # key: ${{ matrix.host.triplet }}-depends-${{ steps.depends_fingerprint.outputs.hash }}
-      #     key: android-depends-${{ steps.depends_fingerprint.outputs.hash }}
+      - name: Depends cache
+        id: depends_cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            depends/built
+          # key: ${{ matrix.host.triplet }}-depends-${{ steps.depends_fingerprint.outputs.hash }}
+          key: android-depends-${{ steps.depends_fingerprint.outputs.hash }}
 
-      # - name: Build depends
-      #   run: |
-      #     cd depends
-      #     make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=$ANDROID_HOME ANDROID_NDK=${ANDROID_HOME}/ndk/23.2.8568313 ANDROID_API_LEVEL=28 ANDROID_TOOLCHAIN_BIN=${ANDROID_HOME}/ndk/23.2.8568313/toolchains/llvm/prebuilt/linux-x86_64/bin
+      - name: Build depends
+        run: |
+          cd depends
+          make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=${{ env.ANDROID_HOME }} ANDROID_NDK=${{ env.ANDROID_HOME }}/ndk/{{ env.ANDROID_NDK_VERSION }} ANDROID_API_LEVEL=${{ env.ANDROID_API_LEVEL }} ANDROID_TOOLCHAIN_BIN=${{ env.ANDROID_HOME }}/ndk/{{ env.ANDROID_NDK_VERSION }}/toolchains/llvm/prebuilt/linux-x86_64/bin
 
       # # - name: Restore Ccache cache
       # #   uses: actions/cache/restore@v3
