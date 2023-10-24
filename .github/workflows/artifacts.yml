@@ -78,7 +78,6 @@ jobs:
       - name: Depends fingerprint
         id: depends_fingerprint
         run: |
-          echo ${{ env.ANDROID_NDK_VERSION }} > depends/android-ndk-version
           echo "hash=${{ hashFiles('./depends/**') }}" >> "$GITHUB_OUTPUT"
 
       - name: Depends cache
