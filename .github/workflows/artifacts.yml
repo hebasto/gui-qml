@@ -51,7 +51,7 @@ jobs:
     #         artifact: 'unsecure_windows_gui'
 
     env:
-      ANDROID_HOME: '${{ github.workspace }}/Android'
+      ANDROID_HOME: '/tmp/Android'
       ANDROID_API_LEVEL: '28'
       ANDROID_BUILD_TOOLS_VERSION: '28.0.3'
       ANDROID_NDK_VERSION: '23.2.8568313'
