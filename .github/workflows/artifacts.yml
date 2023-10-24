@@ -61,8 +61,8 @@ jobs:
     steps:
       - name: Install dependency packages
         run: |
-          sudo apt-get update
-          sudo apt-get install curl
+          apt-get update
+          apt-get install curl
 
       - name: Install Android tools
         run: |
