@@ -94,6 +94,6 @@ jobs:
         run: |
           cd depends
           make print-build_id
-          tree built/aarch64-linux-android
+          tree built/aarch64-linux-android || true
           make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=${{ env.ANDROID_HOME }} ANDROID_NDK=${{ env.ANDROID_HOME }}/ndk/${{ env.ANDROID_NDK_VERSION }} ANDROID_API_LEVEL=${{ env.ANDROID_API_LEVEL }} ANDROID_TOOLCHAIN_BIN=${{ env.ANDROID_HOME }}/ndk/${{ env.ANDROID_NDK_VERSION }}/toolchains/llvm/prebuilt/linux-x86_64/bin NO_QT=1 NO_WALLET=1 NO_NATPMP=1 NO_UPNP=1 NO_LIBZMQ=1
           tree built/aarch64-linux-android
