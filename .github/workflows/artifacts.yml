@@ -101,38 +101,6 @@ jobs:
       - name: Build depends
         run: |
           cd depends
-          make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=${{ env.ANDROID_HOME }} ANDROID_NDK=${{ env.ANDROID_HOME }}/ndk/${{ env.ANDROID_NDK_VERSION }} ANDROID_API_LEVEL=${{ env.ANDROID_API_LEVEL }} ANDROID_TOOLCHAIN_BIN=${{ env.ANDROID_HOME }}/ndk/${{ env.ANDROID_NDK_VERSION }}/toolchains/llvm/prebuilt/linux-x86_64/bin
-
-      - name: Restore Ccache cache
-        uses: actions/cache/restore@v3
-        id: ccache-cache
-        with:
-          path: ${{ env.CCACHE_DIR }}
-          key: aarch64-linux-android-ccache-${{ github.run_id }}
-          restore-keys: aarch64-linux-android-ccache-
-          # key: ${{ matrix.host.triplet }}-ccache-${{ github.run_id }}
-          # restore-keys: ${{ matrix.host.triplet }}-ccache-
-
-      - name: Configure
-        run: |
-          ./autogen.sh
-          ./configure CONFIG_SITE=$PWD/depends/aarch64-linux-android/share/config.site --disable-dependency-tracking --disable-tests --disable-bench --disable-fuzz-binary || (cat config.log; false)
-
-      - name: Build GUI
-        run: |
-          ccache --zero-stats
-          make -j$(nproc) -C src/qt bitcoin-qt
-          ccache --version | head -n 1 && ccache --show-stats
-
-      - name: Save Ccache cache
-        uses: actions/cache/save@v3
-        if: github.event_name != 'pull_request' && steps.ccache-cache.outputs.cache-hit != 'true'
-        with:
-          path: ${{ env.CCACHE_DIR }}
-          key: aarch64-linux-android-ccache-${{ github.run_id }}
-          # key: ${{ matrix.host.triplet }}-ccache-${{ github.run_id }}
-
-      # # - uses: actions/upload-artifact@v3
-      # #   with:
-      # #     name: ${{ matrix.host.artifact }}
-      # #     path: src/qt/${{ matrix.host.gui_exe }}
+          pwd
+          ls -l
+          ls -l built
