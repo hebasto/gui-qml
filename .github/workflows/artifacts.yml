@@ -101,6 +101,9 @@ jobs:
       - name: Build depends
         run: |
           cd depends
+          pwd
+          ls -l
+          ls -l built
           make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=${{ env.ANDROID_HOME }} ANDROID_NDK=${{ env.ANDROID_HOME }}/ndk/${{ env.ANDROID_NDK_VERSION }} ANDROID_API_LEVEL=${{ env.ANDROID_API_LEVEL }} ANDROID_TOOLCHAIN_BIN=${{ env.ANDROID_HOME }}/ndk/${{ env.ANDROID_NDK_VERSION }}/toolchains/llvm/prebuilt/linux-x86_64/bin
 
       - name: Restore Ccache cache
