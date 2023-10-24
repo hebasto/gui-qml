@@ -22,6 +22,7 @@ jobs:
     name: Android
     # name: ${{ matrix.host.name }}
     runs-on: ubuntu-latest
+    container: ubuntu:22.04
 
     # strategy:
     #   fail-fast: false
@@ -50,69 +51,89 @@ jobs:
     #         artifact: 'unsecure_windows_gui'
 
     env:
-      XCODE_VERSION: '12.2'
-      XCODE_BUILD_ID: '12B45b'
+      ANDROID_HOME: 'Android'
+      ANDROID_API_LEVEL: '28'
+      ANDROID_BUILD_TOOLS_VERSION: '28.0.3'
+      ANDROID_NDK_VERSION: '23.2.8568313'
+      ANDROID_TOOLS_URL: 'https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip'
       CCACHE_MAXSIZE: '30M'
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Install dependency packages
         run: |
-          sudo apt-get update
-          sudo apt-get install ccache
-          echo "CCACHE_DIR=${{ runner.temp }}/ccache" >> "$GITHUB_ENV"
-        # sudo apt-get install ccache ${{ matrix.host.packages }}
-        # echo "CCACHE_DIR=${{ runner.temp }}/ccache" >> "$GITHUB_ENV"
+          apt-get update
+          apt-get install --no-install-recommends -y ca-certificates curl openjdk-8-jdk unzip
 
-      - name: Depends fingerprint
-        id: depends_fingerprint
+      - name: Install Android tools
         run: |
-          echo $ANDROID_NDK | tee depends/android-ndk-version
-          echo "hash=${{ hashFiles('./depends/**') }}" >> "$GITHUB_OUTPUT"
+          curl --location --fail ${{ env.ANDROID_TOOLS_URL }} -o android-tools.zip
+          mkdir -p ${{ env.ANDROID_HOME }}
+          unzip -o android-tools.zip -d ${{ env.ANDROID_HOME }}
+          yes | ${{ env.ANDROID_HOME }}/cmdline-tools/bin/sdkmanager --sdk_root=${{ env.ANDROID_HOME }} --install "build-tools;${{ env.ANDROID_BUILD_TOOLS_VERSION }}" "platform-tools" "platforms;android-31" "platforms;android-${{ env.ANDROID_API_LEVEL }}" "ndk;${{ env.ANDROID_NDK_VERSION }}"
 
-      - name: Depends cache
-        id: depends_cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            depends/built
-          # key: ${{ matrix.host.triplet }}-depends-${{ steps.depends_fingerprint.outputs.hash }}
-          key: android-depends-${{ steps.depends_fingerprint.outputs.hash }}
+      - run: |
+          echo ${{ env.ANDROID_BUILD_TOOLS_VERSION }}
+          echo ${{ env.ANDROID_NDK_VERSION }}
+          dir ${{ env.ANDROID_HOME }}
 
-      - name: Build depends
-        run: |
-          cd depends
-          make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=$ANDROID_HOME ANDROID_NDK=${ANDROID_HOME}/ndk/23.2.8568313 ANDROID_API_LEVEL=28 ANDROID_TOOLCHAIN_BIN=${ANDROID_HOME}/ndk/23.2.8568313/toolchains/llvm/prebuilt/linux-x86_64/bin
+      # - name: Checkout
+      #   uses: actions/checkout@v4
 
-      # - name: Restore Ccache cache
-      #   uses: actions/cache/restore@v3
-      #   id: ccache-cache
-      #   with:
-      #     path: ${{ env.CCACHE_DIR }}
-      #     key: ${{ matrix.host.triplet }}-ccache-${{ github.run_id }}
-      #     restore-keys: ${{ matrix.host.triplet }}-ccache-
-
-      # - name: Configure
+      # - name: Install dependency packages
       #   run: |
-      #     ./autogen.sh
-      #     ./configure CONFIG_SITE=${{ github.workspace }}/depends/${{ matrix.host.triplet }}/share/config.site --disable-dependency-tracking --enable-werror ${{ matrix.host.configure_options }} || (cat config.log; false)
+      #     sudo apt-get update
+      #     sudo apt-get install ccache
+      #     echo "CCACHE_DIR=${{ runner.temp }}/ccache" >> "$GITHUB_ENV"
+      #   # sudo apt-get install ccache ${{ matrix.host.packages }}
+      #   # echo "CCACHE_DIR=${{ runner.temp }}/ccache" >> "$GITHUB_ENV"
 
-      # - name: Build GUI
+      # - name: Depends fingerprint
+      #   id: depends_fingerprint
       #   run: |
-      #     ccache --zero-stats
-      #     make -j$(nproc) src/qt/${{ matrix.host.gui_exe }}
-      #     ccache --version | head -n 1 && ccache --show-stats
+      #     echo $ANDROID_NDK | tee depends/android-ndk-version
+      #     echo "hash=${{ hashFiles('./depends/**') }}" >> "$GITHUB_OUTPUT"
 
-      # - name: Save Ccache cache
-      #   uses: actions/cache/save@v3
-      #   if: github.event_name != 'pull_request' && steps.ccache-cache.outputs.cache-hit != 'true'
+      # - name: Depends cache
+      #   id: depends_cache
+      #   uses: actions/cache@v3
       #   with:
-      #     path: ${{ env.CCACHE_DIR }}
-      #     key: ${{ matrix.host.triplet }}-ccache-${{ github.run_id }}
+      #     path: |
+      #       depends/built
+      #     # key: ${{ matrix.host.triplet }}-depends-${{ steps.depends_fingerprint.outputs.hash }}
+      #     key: android-depends-${{ steps.depends_fingerprint.outputs.hash }}
 
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: ${{ matrix.host.artifact }}
-      #     path: src/qt/${{ matrix.host.gui_exe }}
+      # - name: Build depends
+      #   run: |
+      #     cd depends
+      #     make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=$ANDROID_HOME ANDROID_NDK=${ANDROID_HOME}/ndk/23.2.8568313 ANDROID_API_LEVEL=28 ANDROID_TOOLCHAIN_BIN=${ANDROID_HOME}/ndk/23.2.8568313/toolchains/llvm/prebuilt/linux-x86_64/bin
+
+      # # - name: Restore Ccache cache
+      # #   uses: actions/cache/restore@v3
+      # #   id: ccache-cache
+      # #   with:
+      # #     path: ${{ env.CCACHE_DIR }}
+      # #     key: ${{ matrix.host.triplet }}-ccache-${{ github.run_id }}
+      # #     restore-keys: ${{ matrix.host.triplet }}-ccache-
+
+      # # - name: Configure
+      # #   run: |
+      # #     ./autogen.sh
+      # #     ./configure CONFIG_SITE=${{ github.workspace }}/depends/${{ matrix.host.triplet }}/share/config.site --disable-dependency-tracking --enable-werror ${{ matrix.host.configure_options }} || (cat config.log; false)
+
+      # # - name: Build GUI
+      # #   run: |
+      # #     ccache --zero-stats
+      # #     make -j$(nproc) src/qt/${{ matrix.host.gui_exe }}
+      # #     ccache --version | head -n 1 && ccache --show-stats
+
+      # # - name: Save Ccache cache
+      # #   uses: actions/cache/save@v3
+      # #   if: github.event_name != 'pull_request' && steps.ccache-cache.outputs.cache-hit != 'true'
+      # #   with:
+      # #     path: ${{ env.CCACHE_DIR }}
+      # #     key: ${{ matrix.host.triplet }}-ccache-${{ github.run_id }}
+
+      # # - uses: actions/upload-artifact@v3
+      # #   with:
+      # #     name: ${{ matrix.host.artifact }}
+      # #     path: src/qt/${{ matrix.host.gui_exe }}
