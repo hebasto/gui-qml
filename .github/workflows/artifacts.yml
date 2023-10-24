@@ -59,12 +59,17 @@ jobs:
       CCACHE_MAXSIZE: '30M'
 
     steps:
-      - run: |
+      - name: Install dependency packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install curl
+
+      - name: Install Android tools
+        run: |
           curl --location --fail ${{ env.ANDROID_TOOLS_URL }} -o android-tools.zip
           mkdir -p ${{ env.ANDROID_HOME }}
           unzip -o android-tools.zip -d ${{ env.ANDROID_HOME }}
           yes | ${{ env.ANDROID_HOME }}/cmdline-tools/bin/sdkmanager --sdk_root=${{ env.ANDROID_HOME }} --install "build-tools;${{ env.ANDROID_BUILD_TOOLS_VERSION }}" "platform-tools" "platforms;android-31" "platforms;android-${{ env.ANDROID_API_LEVEL }}" "ndk;${{ env.ANDROID_NDK_VERSION }}"
-
 
       - run: |
           echo ${{ env.ANDROID_BUILD_TOOLS_VERSION }}
