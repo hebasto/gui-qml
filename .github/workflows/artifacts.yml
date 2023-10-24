@@ -62,7 +62,7 @@ jobs:
       - name: Install dependency packages
         run: |
           apt-get update
-          apt-get install --no-install-recommends -y ca-certificates curl lbzip2 make openjdk-8-jdk patch unzip xz-utils
+          apt-get install --no-install-recommends -y ca-certificates curl g++ lbzip2 make openjdk-8-jdk patch unzip xz-utils
 
       - name: Install Android tools
         run: |
