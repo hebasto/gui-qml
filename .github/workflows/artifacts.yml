@@ -65,7 +65,7 @@ jobs:
       - name: Install dependency packages
         run: |
           apt-get update
-          apt-get install --no-install-recommends -y ca-certificates ccache curl g++ lbzip2 libtool make openjdk-8-jdk patch pkg-config python3 unzip xz-utils
+          apt-get install --no-install-recommends -y autoconf automake ca-certificates ccache curl g++ lbzip2 libtool make openjdk-8-jdk patch pkg-config python3 unzip xz-utils
           echo "CCACHE_DIR=/tmp/ccache" >> "$GITHUB_ENV"
 
       - name: Install Android tools
