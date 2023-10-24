@@ -51,7 +51,7 @@ jobs:
     #         artifact: 'unsecure_windows_gui'
 
     env:
-      ANDROID_HOME: 'Android'
+      ANDROID_HOME: '${{ github.workspace }}/Android'
       ANDROID_API_LEVEL: '28'
       ANDROID_BUILD_TOOLS_VERSION: '28.0.3'
       ANDROID_NDK_VERSION: '23.2.8568313'
@@ -100,7 +100,7 @@ jobs:
       - name: Build depends
         run: |
           cd depends
-          make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=${{ env.ANDROID_HOME }} ANDROID_NDK=${{ env.ANDROID_HOME }}/ndk/{{ env.ANDROID_NDK_VERSION }} ANDROID_API_LEVEL=${{ env.ANDROID_API_LEVEL }} ANDROID_TOOLCHAIN_BIN=${{ env.ANDROID_HOME }}/ndk/{{ env.ANDROID_NDK_VERSION }}/toolchains/llvm/prebuilt/linux-x86_64/bin
+          make -j$(nproc) HOST=aarch64-linux-android ANDROID_SDK=${{ env.ANDROID_HOME }} ANDROID_NDK=${{ env.ANDROID_HOME }}/ndk/${{ env.ANDROID_NDK_VERSION }} ANDROID_API_LEVEL=${{ env.ANDROID_API_LEVEL }} ANDROID_TOOLCHAIN_BIN=${{ env.ANDROID_HOME }}/ndk/${{ env.ANDROID_NDK_VERSION }}/toolchains/llvm/prebuilt/linux-x86_64/bin
 
       # # - name: Restore Ccache cache
       # #   uses: actions/cache/restore@v3
