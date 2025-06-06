@@ -244,6 +244,19 @@ if(qt_lib_type STREQUAL "STATIC_LIBRARY")
   )
 endif()
 
+
+qt6_add_qml_module(bitcoinqt
+  URI qt
+  VERSION 1.0
+  SOURCES
+    ../qml/bitcoin.cpp
+  QML_FILES
+    ../qml/pages/stub.qml
+  # RESOURCES
+  #   img/world.png
+)
+
+
 file(GLOB ts_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} locale/*.ts)
 set_source_files_properties(${ts_files} PROPERTIES OUTPUT_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/locale)
 qt6_add_lrelease(bitcoinqt

@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/bitcoin.h>
+#include <qml/bitcoin.h>
 
 #include <compat/compat.h>
 #include <util/translation.h>
@@ -21,5 +21,5 @@ const std::function<std::string()> G_TEST_GET_FULL_NAME{};
 
 MAIN_FUNCTION
 {
-    return GuiMain(argc, argv);
+    return QmlGuiMain(argc, argv);
 }
