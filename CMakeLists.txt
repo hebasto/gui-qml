@@ -254,7 +254,7 @@ if(WITH_USDT)
 endif()
 
 if(BUILD_GUI)
-  set(qt_components Core Gui Widgets LinguistTools)
+  set(qt_components Core Gui Widgets Quick LinguistTools)
   if(ENABLE_WALLET)
     list(APPEND qt_components Network)
   endif()
