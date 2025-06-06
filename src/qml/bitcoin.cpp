@@ -52,6 +52,10 @@ int QmlGuiMain(int argc, char* argv[])
     boost::signals2::scoped_connection handler_init_message = ::uiInterface.InitMessage_connect(noui_InitMessage);
 
     QGuiApplication app(argc, argv);
+    QQmlApplicationEngine engine("src/qml/pages/stub.qml");
+    if (engine.rootObjects().isEmpty()) {
+        return EXIT_FAILURE;
+    }
 
     // Parse command-line options. We do this after qt in order to show an error if there are problems parsing these.
     SetupServerArgs(gArgs);
