@@ -136,6 +136,7 @@ set_property(SOURCE macnotificationhandler.mm
 target_link_libraries(bitcoinqt
   PUBLIC
     Qt6::Widgets
+    Qt6::Quick
   PRIVATE
     core_interface
     bitcoin_cli
