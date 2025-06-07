@@ -2,6 +2,11 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or https://opensource.org/license/mit/.
 
+if(QT_KNOWN_POLICY_QTP0004)
+  # Extra directories with QML files in a QML module need extra qmldir files.
+  qt_policy(SET QTP0004 NEW)
+endif()
+
 set(CMAKE_AUTOMOC ON)
 
 qt6_add_qml_module(bitcoin_qml
@@ -10,6 +15,9 @@ qt6_add_qml_module(bitcoin_qml
   STATIC
   SOURCES
     bitcoin.cpp
+  RESOURCE_PREFIX /qt/qml/
+  QML_FILES
+    pages/stub.qml
 )
 
 target_compile_definitions(bitcoin_qml
