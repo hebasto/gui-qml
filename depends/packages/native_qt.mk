@@ -144,7 +144,7 @@ endef
 
 define $(package)_config_cmds
   cd qtbase && \
-  ./configure -top-level $($(package)_config_opts) -- $($(package)_cmake_opts)
+  ./configure -top-level $($(package)_config_opts) -- --log-level=VERBOSE $($(package)_cmake_opts)
 endef
 
 define $(package)_build_cmds
