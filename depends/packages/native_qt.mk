@@ -65,6 +65,7 @@ $(package)_config_opts += -no-widgets
 $(package)_config_opts += -no-glib
 $(package)_config_opts += -no-icu
 $(package)_config_opts += -no-libudev
+$(package)_config_opts += -no-opengl
 $(package)_config_opts += -no-openssl
 $(package)_config_opts += -no-zstd
 $(package)_config_opts += -qt-pcre
