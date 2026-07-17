@@ -80,16 +80,19 @@ target_link_libraries(bitcoinqml_unit_tests
 
 add_test(NAME bitcoinqml_unit_tests COMMAND bitcoinqml_unit_tests -platform offscreen)
 
+qt6_add_resources(QMLTESTS_QRC_CPP ${QML_QRC} qml/bitcoin_qmltests.qrc)
+
 add_executable(bitcoinqml_qmltests
   qml/qml_tests_main.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/../qml/components/blockclockdial.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/../qml/controls/linegraph.cpp
+  ${QMLTESTS_QRC_CPP}
 )
 
 target_compile_definitions(bitcoinqml_qmltests
   PRIVATE
-    BITCOINQML_QML_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/../qml"
-    QUICK_TEST_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/qml"
+    BITCOINQML_QML_SOURCE_DIR="qrc:/qml"
+    QUICK_TEST_SOURCE_DIR=":/test/qml"
     BITCOINQML_QML_TEST_MOCKS_DIR="${CMAKE_CURRENT_SOURCE_DIR}/mocks/qml"
 )
 
