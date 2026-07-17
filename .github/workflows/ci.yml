@@ -25,7 +25,6 @@ jobs:
             cmake \
             ninja-build \
             pkg-config \
-            libevent-dev \
             libsqlite3-dev \
             zlib1g-dev \
             libboost-all-dev \

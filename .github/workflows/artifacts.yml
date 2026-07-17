@@ -30,7 +30,7 @@ jobs:
       - name: MacOS Install Deps
         if: contains(matrix.os, 'macos')
         run: |
-          brew install ccache boost pkgconf libevent qt@6 qrencode coreutils llvm
+          brew install ccache boost pkgconf qt@6 qrencode coreutils llvm
           if [ "${BUILD_APP_TESTS}" = "ON" ]; then
             brew install googletest
           fi
@@ -45,7 +45,7 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y \
             build-essential ccache cmake pkgconf \
-            libevent-dev libboost-dev libsqlite3-dev libgl-dev libqrencode-dev \
+            libboost-dev libsqlite3-dev libgl-dev libqrencode-dev \
             qt6-base-dev qt6-tools-dev qt6-l10n-tools qt6-tools-dev-tools \
             qt6-declarative-dev qml6-module-qt-labs-settings qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-dialogs qml6-module-qtquick-layouts qml6-module-qtquick-templates qml6-module-qtqml
           if [ "${BUILD_APP_TESTS}" = "ON" ]; then
