@@ -5,7 +5,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import Qt.labs.settings 1.0
 import "../../controls"
 import "../../components"
 
@@ -16,7 +15,7 @@ InformationPage {
     property int trafficGraphScale: 300
     property bool showBackButton: true
 
-    Settings {
+    AppSettings {
         id: settings
         property alias trafficGraphScale: root.trafficGraphScale
     }
