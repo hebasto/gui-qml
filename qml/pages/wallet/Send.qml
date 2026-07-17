@@ -6,7 +6,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Dialogs
-import Qt.labs.settings 1.0
 import org.bitcoincore.qt 1.0
 
 import "../../controls"
@@ -506,7 +505,7 @@ PageStack {
             }
         }
 
-        Settings {
+        AppSettings {
             id: settings
             property bool coinControlEnabled: false
             property bool multipleRecipientsEnabled: false

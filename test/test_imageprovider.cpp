@@ -25,6 +25,7 @@ private Q_SLOTS:
 void ImageProviderTests::initTestCase()
 {
     Q_INIT_RESOURCE(bitcoin_qml);
+    Q_INIT_RESOURCE(bitcoin_compat);
 }
 
 void ImageProviderTests::requestPixmap_requiresSizePointer()

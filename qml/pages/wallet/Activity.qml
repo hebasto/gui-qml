@@ -6,7 +6,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Dialogs
 import QtQuick.Layouts 1.15
-import Qt.labs.settings 1.0
 import org.bitcoincore.qt 1.0
 
 import "../../controls"
@@ -188,7 +187,7 @@ PageStack {
                 displayUnit: optionsModel.displayUnit
             }
 
-            Settings {
+            AppSettings {
                 id: activitySettings
                 property alias searchFiltersVisible: root.filtersVisible
             }
