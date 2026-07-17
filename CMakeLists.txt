@@ -78,7 +78,12 @@ if(APPLE)
   list(APPEND QML_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/qml/models/macdockiconhandler.mm")
 endif()
 
-set(QML_QRC "${CMAKE_CURRENT_SOURCE_DIR}/qml/bitcoin_qml.qrc")
+set(QML_QRC ${CMAKE_CURRENT_SOURCE_DIR}/qml/bitcoin_qml.qrc)
+if(Qt6_VERSION VERSION_GREATER_EQUAL 6.5)
+  list(APPEND QML_QRC ${CMAKE_CURRENT_SOURCE_DIR}/qml/compat/qt65/bitcoin_compat.qrc)
+else()
+  list(APPEND QML_QRC ${CMAKE_CURRENT_SOURCE_DIR}/qml/compat/qt62/bitcoin_compat.qrc)
+endif()
 qt6_add_resources(QML_QRC_CPP ${QML_QRC})
 # See: https://bugreports.qt.io/browse/QTBUG-141858.
 get_target_property(warn_flags warn_interface INTERFACE_COMPILE_OPTIONS)
