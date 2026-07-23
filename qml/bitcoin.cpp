@@ -90,6 +90,7 @@
 #include <QGuiApplication>
 #include <QJSEngine>
 #include <QPointer>
+#include <QPluginLoader>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQmlEngine>
@@ -97,6 +98,7 @@
 #include <QQuickWindow>
 #include <QSettings>
 #include <QString>
+#include <QStyle>
 #include <QStyleHints>
 #include <QTranslator>
 #include <QUrl>
@@ -463,6 +465,33 @@ int QmlGuiMain(int argc, char* argv[])
     ApplyTestSettingsDir();
 #endif
 
+    qInstallMessageHandler(DebugMessageHandler);
+    constexpr auto qt_link =
+#ifdef QT_STATIC
+        "static";
+#else
+        "dynamic";
+#endif
+    qInfo("Qt %s (%s), plugin=%s", qVersion(), qt_link, qUtf8Printable(QGuiApplication::platformName()));
+    const auto static_plugins = QPluginLoader::staticPlugins();
+    if (static_plugins.empty()) {
+        qInfo("No static plugins.");
+    } else {
+        qInfo("Static plugins:");
+        for (const QStaticPlugin& p : static_plugins) {
+            QJsonObject meta_data = p.metaData();
+            const QString plugin_class = meta_data.take(QStringLiteral("className")).toString();
+            const int plugin_version = meta_data.take(QStringLiteral("version")).toInt();
+            qInfo(" %s, version %d", qUtf8Printable(plugin_class), plugin_version);
+        }
+    }
+
+    qInfo("Style: %s / %s", qUtf8Printable(QApplication::style()->objectName()), QApplication::style()->metaObject()->className());
+    qInfo("System: %s, %s", qUtf8Printable(QSysInfo::prettyProductName()), qUtf8Printable(QSysInfo::buildAbi()));
+    for (const QScreen* s : QGuiApplication::screens()) {
+        qInfo("Screen: %s %dx%d, pixel ratio=%.1f", qUtf8Printable(s->name()), s->size().width(), s->size().height(), s->devicePixelRatio());
+    }
+
     app.setQuitOnLastWindowClosed(false);
     setupChainQSettings(&app, QString::fromStdString(gArgs.GetChainTypeString()).toUpper());
     if (gArgs.GetBoolArg("-resetguisettings", false)) {
@@ -730,6 +759,7 @@ int QmlGuiMain(int argc, char* argv[])
     if (!window) {
         return EXIT_FAILURE;
     }
+    qInfo() << "Graphics API in use:" << QmlUtil::GraphicsApi(window);
     desktop_tray_icon_controller.setMainWindow(window);
     if (pre_init_onboarding_context.window) {
         window->setGeometry(pre_init_onboarding_context.window->geometry());
@@ -748,11 +778,6 @@ int QmlGuiMain(int argc, char* argv[])
         test_bridge = std::make_unique<TestBridge>(engine.get(), socket_path);
     }
 #endif
-
-    // Install qDebug() message handler to route to debug.log
-    qInstallMessageHandler(DebugMessageHandler);
-
-    qInfo() << "Graphics API in use:" << QmlUtil::GraphicsApi(window);
 
     node_model.startShutdownPolling();
     const int exit_code{qGuiApp->exec()};
