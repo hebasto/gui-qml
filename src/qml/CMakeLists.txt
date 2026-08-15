@@ -50,3 +50,7 @@ target_link_libraries(bitcoin-qt
 qt6_import_qml_plugins(bitcoin-qt)
 import_plugins(bitcoin-qt)
 install_binary_component(bitcoin-qt HAS_MANPAGE)
+
+if(BUILD_GUI_TESTS)
+  add_subdirectory(test)
+endif()
