@@ -11,38 +11,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   string(APPEND CMAKE_OBJCXX_COMPILE_OBJECT " ${APPEND_CPPFLAGS} ${APPEND_CXXFLAGS}")
 endif()
 
-get_target_property(qt_lib_type Qt6::Core TYPE)
-
-function(import_plugins target)
-  if(qt_lib_type STREQUAL "STATIC_LIBRARY")
-    set(plugins Qt6::QMinimalIntegrationPlugin)
-    if(CMAKE_SYSTEM_NAME MATCHES "^(Linux|FreeBSD|OpenBSD)$")
-      list(APPEND plugins Qt6::QXcbIntegrationPlugin)
-    elseif(WIN32)
-      list(APPEND plugins Qt6::QWindowsIntegrationPlugin Qt6::QModernWindowsStylePlugin)
-    elseif(APPLE)
-      list(APPEND plugins Qt6::QCocoaIntegrationPlugin Qt6::QMacStylePlugin)
-    endif()
-    qt6_import_plugins(${target}
-      INCLUDE ${plugins}
-      EXCLUDE_BY_TYPE
-        accessiblebridge
-        platforms
-        platforms_darwin
-        xcbglintegrations
-        platformthemes
-        platforminputcontexts
-        generic
-        iconengines
-        imageformats
-        egldeviceintegrations
-        styles
-        networkaccess
-        networkinformation
-        tls
-    )
-  endif()
-endfunction()
+include(ImportQtPlugins)
 
 # For Qt-specific commands and variables, please consult:
 #  - https://cmake.org/cmake/help/latest/manual/cmake-qt.7.html
@@ -255,39 +224,48 @@ endif()
 
 add_subdirectory(locale)
 
-add_executable(bitcoin-qt WIN32
+add_executable(bitcoin-qt-legacy WIN32
   main.cpp
   res/bitcoin-qt-res.rc
   ../init/bitcoin-qt.cpp
 )
 
-add_windows_application_manifest(bitcoin-qt)
+add_windows_application_manifest(bitcoin-qt-legacy)
 
-target_link_libraries(bitcoin-qt
+target_compile_definitions(bitcoin-qt-legacy
+  PRIVATE
+    BITCOIN_GUI_EXECUTABLE_NAME="bitcoin-qt-legacy"
+)
+
+target_link_libraries(bitcoin-qt-legacy
   core_interface
   bitcoinqt
   bitcoin_node
 )
 
-import_plugins(bitcoin-qt)
-install_binary_component(bitcoin-qt HAS_MANPAGE)
+import_plugins(bitcoin-qt-legacy)
+install_binary_component(bitcoin-qt-legacy)
 
 if(ENABLE_IPC)
-  add_executable(bitcoin-gui WIN32
+  add_executable(bitcoin-gui-legacy WIN32
     main.cpp
     ../init/bitcoin-gui.cpp
   )
-  target_link_libraries(bitcoin-gui
+  target_compile_definitions(bitcoin-gui-legacy
+    PRIVATE
+      BITCOIN_GUI_EXECUTABLE_NAME="bitcoin-gui-legacy"
+  )
+  target_link_libraries(bitcoin-gui-legacy
     core_interface
     bitcoinqt
     bitcoin_node
     bitcoin_ipc
   )
-  import_plugins(bitcoin-gui)
-  install_binary_component(bitcoin-gui INTERNAL)
+  import_plugins(bitcoin-gui-legacy)
+  install_binary_component(bitcoin-gui-legacy INTERNAL)
 endif()
 
-if(BUILD_GUI_TESTS)
+if(BUILD_GUI_LEGACY_TESTS)
   add_subdirectory(test)
 endif()
 
