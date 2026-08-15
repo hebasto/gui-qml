@@ -16,7 +16,6 @@ class GuiTest(BitcoinTestFramework):
         self.extra_args = [["-server"]]
 
     def skip_test_if_missing_module(self):
-        raise SkipTest("QML GUI node lifecycle support is not available yet")
         self.skip_if_no_gui()
         if self.is_qt_vcpkg():
             # vcpkg builds Qt with -opengl dynamic, making the "minimal"
@@ -26,7 +25,7 @@ class GuiTest(BitcoinTestFramework):
             raise SkipTest("minimal Qt platform plugin unusable with vcpkg Qt")
 
     def setup_nodes(self):
-        self.extra_init = [{"use_gui": True}]
+        self.extra_init = [{"use_gui": True, "ipcbind": True}]
         super().setup_nodes()
 
     def run_test(self):
