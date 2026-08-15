@@ -4,6 +4,7 @@
 
 add_executable(test_bitcoin-qt
   qml/qml_tests_main.cpp
+  test_nodemodel.cpp
   test_testbridge.cpp
   test_unit_tests_main.cpp
 )
@@ -28,6 +29,7 @@ target_compile_definitions(test_bitcoin-qt
 target_link_libraries(test_bitcoin-qt
   PRIVATE
     bitcoinqml
+    univalue
     Qt6::QuickTest
     Qt6::Test
 )
