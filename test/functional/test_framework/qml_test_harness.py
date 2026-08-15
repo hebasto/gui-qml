@@ -17,7 +17,7 @@ GUI_STARTUP_TIMEOUT = 30
 
 
 class QmlTestHarness:
-    """Launch the QML bitcoin-qt in an isolated datadir and connect its test bridge."""
+    """Launch a QML GUI in an isolated datadir and connect its test bridge."""
 
     def __init__(self, qml_argv, tmpdir):
         self.qml_argv = list(qml_argv)
@@ -57,7 +57,6 @@ class QmlTestHarness:
         environment["XDG_CACHE_HOME"] = str(self.cache_dir)
         environment["HOME"] = str(self.home_dir)
         arguments = self.qml_argv + [
-            "-regtest",
             f"-datadir={self.datadir}",
             f"-test-automation={self.socket_path}",
             "-printtoconsole=1",
