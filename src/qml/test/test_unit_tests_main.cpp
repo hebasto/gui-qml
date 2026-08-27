@@ -6,15 +6,23 @@
 
 #include <QCoreApplication>
 
+#include <functional>
 #include <iostream>
+#include <string>
 #include <string_view>
+#include <vector>
+
+extern const std::function<std::vector<const char*>()> G_TEST_COMMAND_LINE_ARGUMENTS{};
+extern const std::function<std::string()> G_TEST_GET_FULL_NAME{};
 
 int RunQmlTests(int argc, char* argv[]);
+int RunApplicationTests(int argc, char* argv[]);
 
 namespace {
 enum class TestSuite {
     UNIT,
     QML,
+    INTEGRATION,
 };
 
 bool ParseTestSuite(int& argc, char* argv[], TestSuite& suite)
@@ -38,6 +46,8 @@ bool ParseTestSuite(int& argc, char* argv[], TestSuite& suite)
             suite = TestSuite::UNIT;
         } else if (value == "qml") {
             suite = TestSuite::QML;
+        } else if (value == "integration") {
+            suite = TestSuite::INTEGRATION;
         } else {
             std::cerr << "Unknown test suite: " << value << "\n";
             return false;
@@ -70,6 +80,8 @@ int main(int argc, char* argv[])
         return RunUnitTests(argc, argv);
     case TestSuite::QML:
         return RunQmlTests(argc, argv);
+    case TestSuite::INTEGRATION:
+        return RunApplicationTests(argc, argv);
     }
     return EXIT_FAILURE;
 }
