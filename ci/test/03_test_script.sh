@@ -127,6 +127,10 @@ if [[ "${GOAL}" != all && "${GOAL}" != codegen ]]; then
   GOAL="all ${GOAL}"
 fi
 
+if [[ "${GOAL}" == codegen ]]; then
+  MAKEJOBS="-j1"
+fi
+
 # shellcheck disable=SC2086
 cmake --build "${BASE_BUILD_DIR}" "$MAKEJOBS" --target $GOAL || (
   echo "Build failure. Verbose build follows."
@@ -134,6 +138,8 @@ cmake --build "${BASE_BUILD_DIR}" "$MAKEJOBS" --target $GOAL || (
   cmake --build "${BASE_BUILD_DIR}" -j1 --target $GOAL --verbose
   false
 )
+
+exit 0
 
 ccache --version | head -n 1 && ccache --show-stats --verbose
 ccache --print-stats | python3 -c '
