@@ -42,6 +42,7 @@ target_sources(bitcoinqml
 target_link_libraries(bitcoinqml
   PRIVATE
     bitcoin_node
+    bitcoin_common
   PUBLIC
     Qt6::Qml
     Qt6::Quick
