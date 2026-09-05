@@ -69,4 +69,20 @@ set_property(
       QT_FATAL_WARNINGS=set:1
 )
 
+if(WIN32 AND VCPKG_TARGET_TRIPLET)
+  set(plugin_path "$<SHELL_PATH:$<PATH:GET_PARENT_PATH,$<PATH:GET_PARENT_PATH,$<TARGET_PROPERTY:Qt6::QWindowsIntegrationPlugin,LOCATION_$<CONFIG>>>>>")
+  set_property(
+    TEST
+      test_bitcoin-qt-qml
+      test_bitcoin-qt-integration
+    APPEND PROPERTY
+      ENVIRONMENT_MODIFICATION
+        # On Windows, vcpkg configures Qt with `-opengl dynamic`, which makes
+        # the "minimal" platform plugin unusable due to internal Qt bugs.
+        QT_QPA_PLATFORM=set:windows
+        QT_PLUGIN_PATH=set:${plugin_path}
+  )
+  unset(plugin_path)
+endif()
+
 install_binary_component(test_bitcoin-qt INTERNAL)
