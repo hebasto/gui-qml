@@ -52,11 +52,11 @@ add_test(NAME test_bitcoin-qt
 )
 
 add_test(NAME test_bitcoin-qt-qml
-  COMMAND test_bitcoin-qt --suite=qml -platform minimal
+  COMMAND test_bitcoin-qt --suite=qml
 )
 
 add_test(NAME test_bitcoin-qt-integration
-  COMMAND test_bitcoin-qt --suite=integration -platform minimal
+  COMMAND test_bitcoin-qt --suite=integration
 )
 
 set_property(
