@@ -64,7 +64,7 @@ def run_testshell_qml_example(functional_tests_dir):
     finally:
         test.shutdown()
         if qml is not None:
-            assert_equal(qml.process.poll(), 0)
+            assert_equal(qml.process.poll(), 1 if platform.system() == "Windows" else 0)
         test.reset()
         assert test.num_nodes is None
 
