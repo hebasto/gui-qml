@@ -28,6 +28,10 @@ class QmlTestHarness:
         self.config_dir = self.tmpdir / "config"
         self.cache_dir = self.tmpdir / "cache"
         self.home_dir = self.tmpdir / "home"
+        self.stdout_dir = self.tmpdir / "stdout"
+        self.stderr_dir = self.tmpdir / "stderr"
+        self.stdout = None
+        self.stderr = None
         self.socket_dir = None
         if os.name == "nt":
             self.socket_path = rf"\\.\pipe\bitcoin-qt-{os.getpid()}-{secrets.token_hex(16)}"
@@ -63,11 +67,21 @@ class QmlTestHarness:
             f"-test-automation={self.socket_path}",
             "-printtoconsole=1",
         ] + list(extra_args or [])
+        # Redirect to files rather than pipes. Nothing drains the GUI's output
+        # for the lifetime of the process, so a pipe would fill up and block the
+        # child inside its logging mutex, wedging every thread that logs. The
+        # Windows pipe buffer is an order of magnitude smaller than Linux's, so
+        # it is reached during startup. Files also let process_output() report
+        # while the GUI is still running, which is when it is needed most.
+        for directory in (self.stdout_dir, self.stderr_dir):
+            directory.mkdir(parents=True, exist_ok=True)
+        self.stdout = tempfile.NamedTemporaryFile(dir=self.stdout_dir, delete=False)
+        self.stderr = tempfile.NamedTemporaryFile(dir=self.stderr_dir, delete=False)
         self.process = subprocess.Popen(
             arguments,
             env=environment,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
+            stdout=self.stdout,
+            stderr=self.stderr,
         )
         try:
             self.driver = QmlDriver(
@@ -82,14 +96,15 @@ class QmlTestHarness:
         return self.process.wait(timeout=timeout)
 
     def process_output(self):
-        if not self.process or self.process.poll() is None:
-            return ""
-        stdout, stderr = self.process.communicate()
-        return "\n".join(
-            output.decode("utf8", errors="replace")
-            for output in (stdout, stderr)
-            if output
-        )
+        """Return the GUI output so far, whether or not the process has exited."""
+        sections = []
+        for name, handle in (("stdout", self.stdout), ("stderr", self.stderr)):
+            if handle is None:
+                continue
+            content = Path(handle.name).read_bytes().decode("utf8", errors="replace").strip()
+            if content:
+                sections.append(f"--- {name} ---\n{content}")
+        return "\n".join(sections)
 
     def stop(self):
         try:
@@ -111,6 +126,9 @@ class QmlTestHarness:
             if self.driver:
                 self.driver.close()
                 self.driver = None
+            for handle in (self.stdout, self.stderr):
+                if handle:
+                    handle.close()
             if self.socket_dir:
                 self.socket_dir.cleanup()
                 self.socket_dir = None
@@ -200,3 +218,29 @@ class TestFrameworkQmlTestHarness(unittest.TestCase):
         self.harness.stop()
 
         self.assertIsNone(self.harness.socket_dir)
+
+    def test_process_output_reports_while_running(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            harness = QmlTestHarness([], tmpdir)
+            if harness.socket_dir:
+                self.addCleanup(harness.socket_dir.cleanup)
+            harness.process = Mock(spec=subprocess.Popen)
+            harness.process.poll.return_value = None
+            for directory in (harness.stdout_dir, harness.stderr_dir):
+                directory.mkdir(parents=True)
+            harness.stdout = tempfile.NamedTemporaryFile(dir=harness.stdout_dir, delete=False)
+            harness.stderr = tempfile.NamedTemporaryFile(dir=harness.stderr_dir, delete=False)
+            try:
+                harness.stdout.write(b"node log line\n")
+                harness.stdout.flush()
+                harness.stderr.write(b"qt warning\n")
+                harness.stderr.flush()
+
+                output = harness.process_output()
+            finally:
+                harness.stdout.close()
+                harness.stderr.close()
+
+        self.assertIn("node log line", output)
+        self.assertIn("qt warning", output)
+        harness.process.communicate.assert_not_called()
