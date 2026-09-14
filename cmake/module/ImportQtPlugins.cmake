@@ -35,5 +35,6 @@ function(import_plugins target)
         networkinformation
         tls
     )
+    qt6_import_qml_plugins(${target})
   endif()
 endfunction()
