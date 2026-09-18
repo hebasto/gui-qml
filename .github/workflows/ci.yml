@@ -18,11 +18,13 @@ jobs:
             image: ubuntu-22.04
             # Jammy's default GCC 11 is below Bitcoin Core's GCC 12.1 minimum.
             extra_packages: 'g++-12'
-            cmake_options: '-DCMAKE_CXX_COMPILER=g++-12'
+            cmake_options: '-DCMAKE_CXX_COMPILER=g++-12 -DAPPEND_CXXFLAGS="-Werror -Wno-error=redundant-move -Wno-error=restrict -Wno-error=stringop-overread"'
           - job_name: 'Ubuntu 24.04, Qt 6.4'
             image: ubuntu-24.04
+            cmake_options: '-DCMAKE_COMPILE_WARNING_AS_ERROR=ON -DAPPEND_CXXFLAGS="-Wno-error=stringop-overread"'
           - job_name: 'Ubuntu 26.04, Qt 6.10'
             image: ubuntu-26.04
+            cmake_options: '-DCMAKE_COMPILE_WARNING_AS_ERROR=ON -DAPPEND_CXXFLAGS="-Wno-error=trailing-whitespace"'
 
     env:
       BUILD_APP_TESTS: ON
